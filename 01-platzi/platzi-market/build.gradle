@@ -1,0 +1,38 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.platzi'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	runtime.exclude group: 'commons-logging', module: 'commons-logging' 
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'io.springfox:springfox-swagger2:3.0.0'
+	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+
+	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+ 
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+    	
+	//necesecitaremos esta dependencia solo en tiempo de ejecuci�n
+	runtimeOnly 'org.postgresql:postgresql'
+	
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}

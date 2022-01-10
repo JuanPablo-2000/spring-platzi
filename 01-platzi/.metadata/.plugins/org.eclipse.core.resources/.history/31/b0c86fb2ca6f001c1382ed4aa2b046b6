@@ -1,0 +1,11 @@
+package co.persistence.mapper;
+
+import org.mapstruct.Mapper;
+
+import co.domain.service.Category;
+import co.persistence.entity.Categoria;
+
+@Mapper(componentModel = "spring")
+public interface CategoryMapper {
+	Category toCategory(Categoria categoria);
+}

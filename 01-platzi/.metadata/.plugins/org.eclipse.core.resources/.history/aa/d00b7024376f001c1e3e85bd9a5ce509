@@ -1,0 +1,5 @@
+package co.persistence.entity;
+
+public class Categoria {
+
+}

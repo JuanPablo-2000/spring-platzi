@@ -1,0 +1,55 @@
+package co.persistence;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Repository;
+
+import co.domain.repository.ProductRepository;
+import co.domain.service.Product;
+import co.persistence.crud.ProductoCrudRepository;
+import co.persistence.entity.Producto;
+import co.persistence.mapper.ProductMapper;
+
+@Repository
+public class ProductoRepository implements ProductRepository {
+	private ProductoCrudRepository productoCrudRepository;
+	private ProductMapper mapper;
+	
+	@Override
+	public List<Product> getAll() {
+		List<Producto> productos = (List<Producto>) productoCrudRepository.findAll();
+		return mapper.toProducts(productos);
+	}
+	
+	@Override
+    public Optional<List<Product>> getByCategory(int categoryId) {
+        List<Producto> productos = productoCrudRepository.findByIdCategoriaOrderByNombreAsc(categoryId);
+        return Optional.of(mapper.toProducts(productos));
+    }
+	
+	@Override
+    public Optional<List<Product>> getScarseProducts(int quantity) {
+        Optional<List<Producto>> productos = productoCrudRepository.findByCantidadStockLessThanAndEstado(quantity, true);
+        return productos.map(prods -> mapper.toProducts(prods));
+    }
+	
+	public Optional<List<Producto>> getEscasos(int cantidad, boolean estado) {
+		return productoCrudRepository.findByCantidadStockLessThanAndEstado(cantidad, true);
+	}
+	
+	
+	
+	public Optional<Product> getProduct(int productId) {
+		return productoCrudRepository.findById(productId).map(producto -> 
+				mapper.toProduct(producto));
+	}
+	
+	public Producto save(Producto producto) {
+		return productoCrudRepository.save(producto);
+	}
+	
+	public void delete(int idProducto) {
+		productoCrudRepository.deleteById(idProducto);
+	}
+}

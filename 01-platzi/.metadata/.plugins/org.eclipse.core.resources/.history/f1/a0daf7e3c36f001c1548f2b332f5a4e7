@@ -1,0 +1,5 @@
+package co.domain.service;
+
+public class Product {
+
+}

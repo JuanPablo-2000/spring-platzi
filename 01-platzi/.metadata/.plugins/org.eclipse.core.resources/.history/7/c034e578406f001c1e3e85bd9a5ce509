@@ -1,0 +1,7 @@
+package co.persistence;
+
+import co.persistence.crud.ProductoCrudRepository;
+
+public class ProductoRepository {
+	private ProductoCrudRepository productoCrudRepository;
+}

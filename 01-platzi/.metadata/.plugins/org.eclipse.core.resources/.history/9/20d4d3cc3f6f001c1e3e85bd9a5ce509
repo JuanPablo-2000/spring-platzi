@@ -1,0 +1,5 @@
+package co.persistence.crud;
+
+public interface ProductoCrudRepository {
+
+}

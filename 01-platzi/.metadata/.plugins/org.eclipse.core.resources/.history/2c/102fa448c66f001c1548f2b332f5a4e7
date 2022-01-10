@@ -1,0 +1,5 @@
+package co.persistence.mapper;
+
+public interface CategoryMapper {
+
+}

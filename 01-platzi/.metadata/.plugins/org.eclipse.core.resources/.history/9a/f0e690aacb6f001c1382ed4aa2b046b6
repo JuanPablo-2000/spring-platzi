@@ -1,0 +1,16 @@
+package co.persistence.mapper;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+
+import co.domain.service.Product;
+import co.persistence.entity.Producto;
+
+@Mapper(componentModel = "spring")
+public interface ProductMapper {
+	@Mappings({
+		@Mapping(source = "idProducto", target = "productId"),
+	})
+	Product toProduct(Producto producto);
+}
