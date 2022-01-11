@@ -1,4 +1,4 @@
-package co.web.controller.config;
+package co.web.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
