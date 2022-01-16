@@ -10,4 +10,5 @@ public class PlatziMarketApplication {
 		SpringApplication.run(PlatziMarketApplication.class, args);
 	}
 	
+	
 }
